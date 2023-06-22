@@ -62,14 +62,11 @@ export const Registration = () => {
           Создание аккаунта
         </Typography>
         <div className={styles.avatar}>
-          <Avatar
-            onClick={() => inputFileRef.current.click()}
-            sx={{ width: 80, height: 80 }}
-          >
+          <Avatar onClick={() => inputFileRef.current.click()} sx={{ width: 80, height: 80 }}>
             {iconUrl ? (
               <img
                 className={styles.image}
-                src={`http://localhost:4444${iconUrl}`}
+                src={new URL(iconUrl, process.env.REACT_APP_API_URL).toString()}
                 alt="Uploaded"
               />
             ) : firstName ? (
@@ -78,12 +75,7 @@ export const Registration = () => {
               <Upload />
             )}
           </Avatar>
-          <input
-            ref={inputFileRef}
-            type="file"
-            onChange={handleChangeFile}
-            hidden
-          />
+          <input ref={inputFileRef} type="file" onChange={handleChangeFile} hidden />
           {!iconUrl && <div>upload your avatar</div>}
         </div>
         <TextField
@@ -111,13 +103,7 @@ export const Registration = () => {
           helperText={errors.password?.message}
           fullWidth
         />
-        <Button
-          disabled={!isValid}
-          type="submit"
-          size="large"
-          variant="contained"
-          fullWidth
-        >
+        <Button disabled={!isValid} type="submit" size="large" variant="contained" fullWidth>
           Зарегистрироваться
         </Button>
       </form>

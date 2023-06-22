@@ -35,7 +35,9 @@ export const FullPost = () => {
       <Post
         id={post._id}
         title={post.title}
-        imageUrl={post.imageUrl ? `http://localhost:4444${post.imageUrl}` : ""}
+        imageUrl={
+          post.imageUrl ? new URL(post.imageUrl, process.env.REACT_APP_API_URL).toString() : ""
+        }
         user={post.user}
         createdAt={post.createdAt}
         viewsCount={post.viewsCount}
