@@ -13,7 +13,6 @@ import { UserInfo } from "../UserInfo";
 
 export const Header = () => {
   const isAuth = useSelector(selectIsAuth);
-  console.log(isAuth);
   const { data } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
@@ -50,11 +49,7 @@ export const Header = () => {
                 <Link to="/add-post">
                   <Button variant="contained">Create a post</Button>
                 </Link>
-                <Button
-                  onClick={onClickLogout}
-                  variant="contained"
-                  color="error"
-                >
+                <Button onClick={onClickLogout} variant="contained" color="error">
                   Logout
                 </Button>
               </>
