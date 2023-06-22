@@ -104,31 +104,18 @@ export const AddPost = () => {
 
   return (
     <Paper style={{ padding: 30 }}>
-      <Button
-        onClick={() => inputFileRef.current.click()}
-        variant="outlined"
-        size="large"
-      >
+      <Button onClick={() => inputFileRef.current.click()} variant="outlined" size="large">
         Загрузить превью
       </Button>
-      <input
-        ref={inputFileRef}
-        type="file"
-        onChange={handleChangeFile}
-        hidden
-      />
+      <input ref={inputFileRef} type="file" onChange={handleChangeFile} hidden />
       {imageUrl && (
         <>
-          <Button
-            variant="contained"
-            color="error"
-            onClick={onClickRemoveImage}
-          >
+          <Button variant="contained" color="error" onClick={onClickRemoveImage}>
             Удалить
           </Button>
           <img
             className={styles.image}
-            src={`http://localhost:4444${imageUrl}`}
+            src={imageUrl ? new URL(imageUrl, process.env.REACT_APP_API_URL).toString() : ""}
             alt="Uploaded"
           />
         </>
@@ -151,12 +138,7 @@ export const AddPost = () => {
         value={tags}
         onChange={(e) => setTags(e.target.value)}
       />
-      <SimpleMDE
-        className={styles.editor}
-        value={text}
-        onChange={onChange}
-        options={options}
-      />
+      <SimpleMDE className={styles.editor} value={text} onChange={onChange} options={options} />
       <div className={styles.buttons}>
         <Button onClick={onSubmit} size="large" variant="contained">
           {isEditing ? "Сохранить" : "Опубликовать"}
