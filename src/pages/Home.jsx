@@ -51,47 +51,33 @@ export const Home = () => {
         onChange={handleChange}
         aria-label="basic tabs example"
       >
-        <Tab
-          value={0}
-          onClick={() => handleSortBy("createdAt")}
-          label="Most recent"
-        />
-        <Tab
-          value={1}
-          onClick={() => handleSortBy("viewsCount")}
-          label="Popular"
-        />
+        <Tab value={0} onClick={() => handleSortBy("createdAt")} label="Most recent" />
+        <Tab value={1} onClick={() => handleSortBy("viewsCount")} label="Popular" />
       </Tabs>
       {name && <h2># {name}</h2>}
       <Grid container spacing={4}>
         <Grid xs={8} item>
-          {(posts.status === "loading" ? [...Array(5)] : posts.items).map(
-            (item, index) =>
-              posts.status === "loading" ? (
-                <Post key={index} isLoading={true} />
-              ) : (
-                <Post
-                  key={index}
-                  id={item._id}
-                  title={item.title}
-                  imageUrl={
-                    item.imageUrl ? `http://localhost:4444${item.imageUrl}` : ""
-                  }
-                  user={item.user}
-                  createdAt={item.createdAt}
-                  viewsCount={item.viewsCount}
-                  commentsCount={item.comments && item.comments.length}
-                  tags={item.tags}
-                  isEditable={userData?._id === item.user._id}
-                />
-              )
+          {(posts.status === "loading" ? [...Array(5)] : posts.items).map((item, index) =>
+            posts.status === "loading" ? (
+              <Post key={index} isLoading={true} />
+            ) : (
+              <Post
+                key={index}
+                id={item._id}
+                title={item.title}
+                imageUrl={item.imageUrl ? `${process.env.API_URL}${item.imageUrl}` : ""}
+                user={item.user}
+                createdAt={item.createdAt}
+                viewsCount={item.viewsCount}
+                commentsCount={item.comments && item.comments.length}
+                tags={item.tags}
+                isEditable={userData?._id === item.user._id}
+              />
+            )
           )}
         </Grid>
         <Grid xs={4} item>
-          <TagsBlock
-            items={tags.items}
-            isLoading={tags.status === "loading" && true}
-          />
+          <TagsBlock items={tags.items} isLoading={tags.status === "loading" && true} />
           {/* <CommentsBlock
             // items={comments.items}
             // items={[
