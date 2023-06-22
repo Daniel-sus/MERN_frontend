@@ -65,7 +65,11 @@ export const Home = () => {
                 key={index}
                 id={item._id}
                 title={item.title}
-                imageUrl={item.imageUrl ? `${process.env.REACT_APP_API_URL}${item.imageUrl}` : ""}
+                imageUrl={
+                  item.imageUrl
+                    ? new URL(item.imageUrl, process.env.REACT_APP_API_URL).toString()
+                    : ""
+                }
                 user={item.user}
                 createdAt={item.createdAt}
                 viewsCount={item.viewsCount}
