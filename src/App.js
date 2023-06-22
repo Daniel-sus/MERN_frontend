@@ -8,9 +8,6 @@ import { Home, FullPost, Registration, AddPost, Login } from "./pages";
 import Profile from "./pages/Profile/Profile";
 import { fetchIsAuthMe } from "./redux/slices/auth";
 
-import dotenv from "dotenv";
-dotenv.config();
-
 function App() {
   const dispatch = useDispatch();
   React.useEffect(() => {
