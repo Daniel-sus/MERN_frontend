@@ -28,7 +28,7 @@ export const Registration = () => {
     defaultValues: {
       fullName: "Vlad",
       email: "test@test.gmail.com",
-      password: "12345",
+      password: "qwerty",
     },
     mode: "onChange",
   });
@@ -59,7 +59,7 @@ export const Registration = () => {
     <Paper classes={{ root: styles.root }}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Typography classes={{ root: styles.title }} variant="h5">
-          Создание аккаунта
+          Create an account
         </Typography>
         <div className={styles.avatar}>
           <Avatar onClick={() => inputFileRef.current.click()} sx={{ width: 80, height: 80 }}>
@@ -79,16 +79,16 @@ export const Registration = () => {
           {!iconUrl && <div>upload your avatar</div>}
         </div>
         <TextField
-          {...register("fullName", { required: "Укажите имя" })}
+          {...register("fullName", { required: "Enter a name" })}
           className={styles.field}
           onChange={(event) => setFirstName(event.target.value)}
-          label="Полное имя"
+          label="Full name"
           error={Boolean(errors.fullName?.message)}
           helperText={errors.fullName?.message}
           fullWidth
         />
         <TextField
-          {...register("email", { required: "Укажите имя" })}
+          {...register("email", { required: "Enter your email" })}
           className={styles.field}
           label="E-Mail"
           error={Boolean(errors.email?.message)}
@@ -96,15 +96,15 @@ export const Registration = () => {
           fullWidth
         />
         <TextField
-          {...register("password", { required: "Укажите пароль" })}
+          {...register("password", { required: "Enter a password" })}
           className={styles.field}
-          label="Пароль"
+          label="Password"
           error={Boolean(errors.password?.message)}
           helperText={errors.password?.message}
           fullWidth
         />
         <Button disabled={!isValid} type="submit" size="large" variant="contained" fullWidth>
-          Зарегистрироваться
+          Register
         </Button>
       </form>
     </Paper>

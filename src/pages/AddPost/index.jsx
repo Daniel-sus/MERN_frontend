@@ -70,7 +70,7 @@ export const AddPost = () => {
       spellChecker: false,
       maxHeight: "400px",
       autofocus: true,
-      placeholder: "Введите текст...",
+      placeholder: "Enter text...",
       status: false,
       autosave: {
         enabled: true,
@@ -105,13 +105,13 @@ export const AddPost = () => {
   return (
     <Paper style={{ padding: 30 }}>
       <Button onClick={() => inputFileRef.current.click()} variant="outlined" size="large">
-        Загрузить превью
+        Download preview
       </Button>
       <input ref={inputFileRef} type="file" onChange={handleChangeFile} hidden />
       {imageUrl && (
         <>
           <Button variant="contained" color="error" onClick={onClickRemoveImage}>
-            Удалить
+            Delete
           </Button>
           <img
             className={styles.image}
@@ -125,7 +125,7 @@ export const AddPost = () => {
       <TextField
         classes={{ root: styles.title }}
         variant="standard"
-        placeholder="Заголовок статьи..."
+        placeholder="Article title..."
         fullWidth
         value={title}
         onChange={(e) => setTitle(e.target.value)}
@@ -133,7 +133,7 @@ export const AddPost = () => {
       <TextField
         classes={{ root: styles.tags }}
         variant="standard"
-        placeholder="Тэги"
+        placeholder="Hashtags in format: trip,city,friends"
         fullWidth
         value={tags}
         onChange={(e) => setTags(e.target.value)}
@@ -141,10 +141,10 @@ export const AddPost = () => {
       <SimpleMDE className={styles.editor} value={text} onChange={onChange} options={options} />
       <div className={styles.buttons}>
         <Button onClick={onSubmit} size="large" variant="contained">
-          {isEditing ? "Сохранить" : "Опубликовать"}
+          {isEditing ? "Save" : "Publish"}
         </Button>
         <Link to="/">
-          <Button size="large">Отмена</Button>
+          <Button size="large">Cancel</Button>
         </Link>
       </div>
     </Paper>

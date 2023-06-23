@@ -87,14 +87,14 @@ export const Home = () => {
             // items={[
             //   {
             //     user: {
-            //       fullName: "Вася Пупкин",
+            //       fullName: "Lows Fof",
             //       avatarUrl: "https://mui.com/static/images/avatar/1.jpg",
             //     },
-            //     text: "Это тестовый комментарий",
+            //     text: "Lessss go",
             //   },
             //   {
             //     user: {
-            //       fullName: "Иван Иванов",
+            //       fullName: "Perea Lods",
             //       avatarUrl: "https://mui.com/static/images/avatar/2.jpg",
             //     },
             //     text: "When displaying three lines or more, the avatar is not aligned at the top. You should set the prop to align the avatar at the top",

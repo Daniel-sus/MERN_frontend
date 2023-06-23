@@ -64,7 +64,7 @@ export const Index = ({ post, setPost }) => {
         )}
         <div className={styles.form}>
           <TextField
-            label="Написать комментарий"
+            label="Write your comment"
             variant="outlined"
             value={inputValue}
             onChange={(e) => onHandleChangeInput(e)}
@@ -73,7 +73,7 @@ export const Index = ({ post, setPost }) => {
             fullWidth
           />
           <Button onClick={() => handleCreateComment()} variant="contained">
-            Отправить
+            Send
           </Button>
         </div>
       </div>
